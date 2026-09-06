@@ -136,7 +136,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/analyze-resume",
+        "https://ai-resume-analyzer-7ia6.onrender.com/analyze-resume",
         {
           method: "POST",
           body: formData,
@@ -183,7 +183,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/match-job",
+        "https://ai-resume-analyzer-7ia6.onrender.com/match-job",
         {
           method: "POST",
           body: formData,
