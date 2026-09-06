@@ -1,0 +1,836 @@
+/* ============================================================
+   GLOBAL
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+button,
+textarea,
+input {
+  font-family: inherit;
+}
+
+
+/* ============================================================
+   APP
+============================================================ */
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e9ef;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7%;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header-badge {
+  background: #eef2ff;
+  color: #4f46e5;
+
+  padding: 8px 15px;
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: auto;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+  text-align: center;
+  padding: 65px 20px 45px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: auto;
+
+  color: #697386;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   UPLOAD CARD
+============================================================ */
+
+.upload-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.upload-card h2 {
+  margin-top: 0;
+}
+
+.upload-description {
+  color: #6b7280;
+}
+
+
+/* ============================================================
+   FILE BUTTON
+============================================================ */
+
+.file-button {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  background: #eef2ff;
+  color: #4f46e5;
+
+  padding: 12px 20px;
+
+  border-radius: 10px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.file-button input {
+  display: none;
+}
+
+.selected-file {
+  margin-top: 15px;
+  color: #374151;
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.analyze-button,
+.match-button {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  background: #4f46e5;
+  color: white;
+}
+
+.analyze-button:hover,
+.match-button:hover {
+  opacity: 0.9;
+}
+
+.analyze-button:disabled,
+.match-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error {
+  margin-top: 15px;
+
+  padding: 12px;
+
+  background: #fef2f2;
+  color: #b91c1c;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   RESULTS
+============================================================ */
+
+.results {
+  margin-top: 45px;
+}
+
+.result-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  padding: 25px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.04);
+}
+
+.result-card h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+
+  font-size: 20px;
+}
+
+.result-card p {
+  color: #596579;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   ATS SCORE
+============================================================ */
+
+.score-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 35px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 35px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.score-circle {
+  width: 170px;
+  height: 170px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #4f46e5 var(--score),
+      #e5e7eb var(--score)
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  flex-shrink: 0;
+}
+
+.score-circle::before {
+  content: "";
+  position: absolute;
+
+  width: 138px;
+  height: 138px;
+
+  border-radius: 50%;
+  background: white;
+}
+
+.score-inner {
+  width: 120px;
+  height: 120px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  z-index: 1;
+}
+
+.score-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: #172033;
+}
+
+.score-label {
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+.score-info h2 {
+  margin-bottom: 5px;
+}
+
+.score-info h3 {
+  color: #4f46e5;
+  margin-top: 5px;
+}
+
+.score-info p {
+  color: #697386;
+}
+
+/* ATS SCORE STATUS */
+.score-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.score-status.excellent {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.score-status.good {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.score-status.average {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.score-status.needs-improvement {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+
+/* ============================================================
+   TAGS
+============================================================ */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background: #eef2ff;
+  color: #4338ca;
+
+  padding: 8px 13px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.missing-tag {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+
+/* ============================================================
+   LISTS
+============================================================ */
+
+.result-card ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.result-card li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+
+/* ============================================================
+   STRENGTHS
+============================================================ */
+
+.strengths-card {
+  border-left: 5px solid #16a34a;
+}
+
+
+/* ============================================================
+   WEAKNESSES
+============================================================ */
+
+.weaknesses-card {
+  border-left: 5px solid #dc2626;
+}
+
+
+/* ============================================================
+   MISSING
+============================================================ */
+
+.missing-card {
+  border-left: 5px solid #f59e0b;
+}
+
+
+/* ============================================================
+   ROLES
+============================================================ */
+
+.roles {
+  display: grid;
+  gap: 12px;
+}
+
+.role {
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 15px;
+
+  border-radius: 10px;
+}
+
+
+/* ============================================================
+   DETAILS
+============================================================ */
+
+.detail-item {
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+}
+
+
+/* ============================================================
+   OBJECT RENDERING
+============================================================ */
+
+.object-content {
+  width: 100%;
+}
+
+.object-row {
+  margin-bottom: 7px;
+  line-height: 1.5;
+}
+
+.object-row strong {
+  color: #374151;
+}
+
+
+/* ============================================================
+   JOB MATCHER
+============================================================ */
+
+.job-matcher {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.job-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.job-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.job-header p {
+  color: #6b7280;
+}
+
+
+/* ============================================================
+   JOB CARD
+============================================================ */
+
+.job-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.job-card label {
+  display: block;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+.job-card textarea {
+  width: 100%;
+
+  resize: vertical;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  padding: 16px;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  outline: none;
+}
+
+.job-card textarea:focus {
+  border-color: #4f46e5;
+
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* ============================================================
+   JOB RESULTS
+============================================================ */
+
+.job-results {
+  margin-top: 30px;
+}
+
+
+/* ============================================================
+   MATCH SCORE
+============================================================ */
+
+.match-score-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.match-score {
+  width: 145px;
+  height: 145px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #16a34a var(--match-score),
+      #e5e7eb var(--match-score)
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  flex-shrink: 0;
+}
+
+.match-score::before {
+  content: "";
+  position: absolute;
+
+  width: 115px;
+  height: 115px;
+
+  border-radius: 50%;
+  background: white;
+}
+
+.match-score-inner {
+  width: 105px;
+  height: 105px;
+
+  border-radius: 50%;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  z-index: 1;
+}
+
+.match-score span {
+  font-size: 35px;
+  font-weight: 800;
+  color: #172033;
+}
+
+.match-score small {
+  color: #6b7280;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.match-score-card h2 {
+  margin-bottom: 8px;
+}
+
+
+/* ============================================================
+   MATCHING CARD
+============================================================ */
+
+.matching-card {
+  border-left: 5px solid #16a34a;
+}
+
+
+/* ============================================================
+   FIT SUMMARY
+============================================================ */
+
+.fit-summary {
+  border-left: 5px solid #4f46e5;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+  text-align: center;
+
+  padding: 30px;
+
+  color: #6b7280;
+
+  border-top: 1px solid #e5e7eb;
+
+  background: #ffffff;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+  .header {
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .match-score-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .score-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .score-circle::before {
+    width: 122px;
+    height: 122px;
+  }
+
+  .score-inner {
+    width: 106px;
+    height: 106px;
+  }
+
+  .score-number {
+    font-size: 36px;
+  }
+
+  .match-score {
+    width: 130px;
+    height: 130px;
+  }
+
+  .match-score::before {
+    width: 103px;
+    height: 103px;
+  }
+
+  .match-score-inner {
+    width: 94px;
+    height: 94px;
+  }
+
+  .match-score span {
+    font-size: 31px;
+  }
+
+  .upload-card,
+  .job-card,
+  .result-card {
+    padding: 20px;
+  }
+
+}
+
+/* ============================================================
+   PROFESSIONAL PDF REPORT BUTTON
+============================================================ */
+
+.pdf-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 8px;
+}
+
+.pdf-button {
+  border: none;
+  border-radius: 10px;
+  padding: 13px 24px;
+  background: #172033;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(23, 32, 51, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.pdf-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(23, 32, 51, 0.18);
+}
+
+.pdf-button:active {
+  transform: translateY(0);
+}
+
+.pdf-button:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.25);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .pdf-button {
+    width: 100%;
+  }
+}
